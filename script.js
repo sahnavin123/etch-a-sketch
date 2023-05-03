@@ -21,7 +21,7 @@ const createGrid = (size) => {
 
 const resetGrid = () => {
   const cells = document.querySelectorAll(".cell");
-  cells.forEach(function (cell) {
+  cells.forEach((cell) => {
     cell.style.backgroundColor = "white";
   });
 };
