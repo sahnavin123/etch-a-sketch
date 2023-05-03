@@ -2,31 +2,31 @@ const container = document.querySelector("#container");
 const resetBtn = document.querySelector("#reset");
 const changeSizeBtn = document.querySelector("#change-size");
 
-function createGrid(size) {
-    const cellSize = 600 / size;
-    for (let i = 0; i < size * size; i++) {
-      const cell = document.createElement("div");
-      cell.classList.add("cell");
-      cell.style.width = `${cellSize}px`;
-      cell.style.height = `${cellSize}px`;
-      container.appendChild(cell);
-    }
-  
-    container.addEventListener("mouseover", (e) => {
-      if (e.target.className === "cell") {
-        e.target.style.backgroundColor = "grey";
-      }
-    });
+const createGrid = (size) => {
+  const cellSize = 600 / size;
+  for (let i = 0; i < size * size; i++) {
+    const cell = document.createElement("div");
+    cell.classList.add("cell");
+    cell.style.width = `${cellSize}px`;
+    cell.style.height = `${cellSize}px`;
+    container.appendChild(cell);
   }
 
-function resetGrid() {
+  container.addEventListener("mouseover", (e) => {
+    if (e.target.className === "cell") {
+      e.target.style.backgroundColor = "grey";
+    }
+  });
+};
+
+const resetGrid = () => {
   const cells = document.querySelectorAll(".cell");
   cells.forEach(function (cell) {
     cell.style.backgroundColor = "white";
   });
-}
+};
 
-function changeSize() {
+const changeSize = () => {
   let newSize = prompt("Enter a new size (maximum 100):");
   if (newSize === null) return;
   newSize = parseInt(newSize);
@@ -38,7 +38,7 @@ function changeSize() {
     container.innerHTML = "";
     createGrid(newSize);
   }
-}
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   createGrid(16);
