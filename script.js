@@ -1,18 +1,15 @@
 const container = document.querySelector("#container");
 const resetBtn = document.querySelector("#reset");
 const changeSizeBtn = document.querySelector("#change-size");
-resetBtn.addEventListener("click", resetGrid);
-changeSizeBtn.addEventListener("click", changeSize);
 
 function createGrid(size) {
-
   for (let i = 0; i < size * size; i++) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
     container.appendChild(cell);
   }
 
-  container.addEventListener("mouseover", function (e) {
+  container.addEventListener("mouseover", (e) => {
     if (e.target.className === "cell") {
       e.target.style.backgroundColor = "grey";
     }
@@ -35,10 +32,14 @@ function changeSize() {
     changeSize();
   } else {
     resetGrid();
+    container.innerHTML = "";
     createGrid(newSize);
   }
 }
 
-document.addEventListener('DOMContentLoaded',()=>{
-    createGrid(16);
-})
+document.addEventListener("DOMContentLoaded", () => {
+  createGrid(16);
+});
+
+resetBtn.addEventListener("click", resetGrid);
+changeSizeBtn.addEventListener("click", changeSize);
