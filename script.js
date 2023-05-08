@@ -1,9 +1,11 @@
 const container = document.querySelector("#container");
 const resetBtn = document.querySelector("#reset");
 const changeSizeBtn = document.querySelector("#change-size");
+const containerSize = 600;
+const defaulsize = 16;
 
 const createGrid = (size) => {
-  const cellSize = 600 / size;
+  const cellSize = containerSize / size;
   for (let i = 0; i < size * size; i++) {
     const cell = document.createElement("div");
     cell.classList.add("cell");
@@ -41,7 +43,7 @@ const changeSize = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  createGrid(16);
+  createGrid(defaulsize);
 });
 
 resetBtn.addEventListener("click", resetGrid);
